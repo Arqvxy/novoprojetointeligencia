@@ -9,30 +9,25 @@ const textoResultado = document.querySelector(".texto-resultado");
 const botaoJogarNovamente = document.querySelector(".novamente-btn");
 const botaoIniciar = document.querySelector(".iniciar-btn");
 const telaInicial = document.querySelector(".tela-inicial");
-
-// Obtenha o elemento de áudio
 const somArraste = document.getElementById("somArraste");
-
-// Função para tocar o som por 1,5 segundos
-function tocarSomPorTempo(tempo) {
-    console.log('Iniciando som...');
-    somArraste.play();
-    setTimeout(() => {
-        console.log('Parando som...');
-        somArraste.pause();
-        somArraste.currentTime = 0; // Reinicia o som para o início
-    }, tempo);
-}
-
-// Adicione eventos para tocar o som
-botaoIniciar.addEventListener("mouseover", () => {
-    console.log('Mouse sobre o botão');
-    tocarSomPorTempo(1500); // 1500 milissegundos = 1,5 segundos
-});
 
 let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
+
+function tocarSomPorTempo() {
+    somArraste.currentTime = 0;
+    somArraste.play();
+}
+
+function adicionarSomAosBotoes() {
+    const botoes = document.querySelectorAll("button");
+    botoes.forEach(botao => {
+        botao.addEventListener("mouseover", tocarSomPorTempo);
+    });
+}
+
+adicionarSomAosBotoes();
 
 botaoIniciar.addEventListener('click', iniciaJogo);
 
@@ -58,12 +53,13 @@ function mostraPergunta() {
 }
 
 function mostraAlternativas() {
-    for (const alternativa of perguntaAtual.alternativas) {
+    perguntaAtual.alternativas.forEach(alternativa => {
         const botaoAlternativas = document.createElement("button");
         botaoAlternativas.textContent = alternativa.texto;
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
-    }
+    });
+    adicionarSomAosBotoes();
 }
 
 function respostaSelecionada(opcaoSelecionada) {
@@ -84,6 +80,14 @@ function mostraResultado() {
     caixaAlternativas.textContent = "";
     caixaResultado.classList.add("mostrar");
     botaoJogarNovamente.addEventListener("click", jogaNovamente);
+
+    setTimeout(() => {
+        mostrarPopup();
+    }, 100);
+}
+
+function mostrarPopup() {
+    alert(`Olá, você se encontra neste endereço abaixo ↓\n\nEndereço: R. Francisco Xavier de Oliveira, 315 - Tatuquara, Curitiba - PR, 81480-000\n\Dispositivo: Notebook Samsung`);
 }
 
 function jogaNovamente() {
@@ -94,9 +98,9 @@ function jogaNovamente() {
 }
 
 function substituiNome() {
-    for (const pergunta of perguntas) {
+    perguntas.forEach(pergunta => {
         pergunta.enunciado = pergunta.enunciado.replace(/você/g, nome);
-    }
+    });
 }
 
 substituiNome();
