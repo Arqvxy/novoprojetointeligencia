@@ -2,7 +2,7 @@
 
 :root {
     --cor-fundo: #000000;
-    --cor-principal: #5564ed ;
+    --cor-principal: #5564ed;
     --cor-secundaria: #a106b9;
     --cor-destaque: #76099bb8;
     --cor-texto: #f4d7ff;
@@ -18,15 +18,16 @@ body {
     min-height: 100vh;
 }
 
-.caixa-principal{
+.caixa-principal {
     background-color: var(--cor-principal);
     width: 90%;
     max-width: 600px;
     text-align: center;
     padding: 20px;
+    border-radius: 20px; /* Arredondar bordas da caixa principal */
 }
 
-h1, .caixa-perguntas, .caixa-resultado{
+h1, .caixa-perguntas, .caixa-resultado {
     font-family: 'Chakra Petch', sans-serif;
 }
 
@@ -38,7 +39,7 @@ button {
     background-color: var(--cor-secundaria);
     color: var(--cor-texto);
     border: none;
-    border-radius: 15px;
+    border-radius: 20px; /* Arredondar bordas dos botões */
     padding: 15px;
     transition: background-color 0.3s;
 }
@@ -48,15 +49,17 @@ button:hover {
     color: var(--cor-principal);
 }
 
-.caixa-resultado{
+.caixa-resultado {
     display: none;
+    border-radius: 20px; /* Arredondar bordas da caixa de resultado */
+    padding: 20px; /* Adicionar um pouco de padding para melhor visualização */
 }
 
-.caixa-resultado.mostrar{
+.caixa-resultado.mostrar {
     display: block;
 }
 
-.caixa-alternativas{
+.caixa-alternativas {
     display: flex;
     flex-direction: column;
     gap: 10px;
