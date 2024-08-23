@@ -88,7 +88,7 @@ export const perguntas = [
         ]
     },
     {
-        enunciado: "Utilizar informações próprias traz um toque pessoal ao nosso trabalho. Agora imagine que você precisa participar de um debate sobre o quanto a IA impacta no trabalho do futuro. Qual posicionamento tomar?",
+        enunciado: "Utilizar informações próprias traz um toque pessoal ao nosso trabalho. Agora imagine que você precisa participar de um debate sobre o quanto a IA impacta o trabalho do futuro. Qual posicionamento tomar?",
         alternativas: [
             {
                 texto: "Defende a ideia de que a IA pode criar novas oportunidades de emprego e melhorar habilidades humanas.",
@@ -167,6 +167,28 @@ export const perguntas = [
                     "Compartilhou artes em redes sociais como forma de ensinar como se comunicar através da arte.",
                     "Percebeu que muitas pessoas têm dificuldade em expressar suas ideias desenhando e acha que a IA é capaz de empoderar essas pessoas a tirarem ideias do papel."
                 ],
+                proxima:8,
+            },
+        ]
+    },
+    {
+        enunciado: "Quem é seu aluno favorito?",
+        alternativas: [
+            {
+                texto: "Erick",
+                afirmacao: [
+                    "Erick o Melhor",
+                    "Erick o Melhor"
+                ],
+                proxima: null,
+            },
+            {
+                texto: "Erick de novo",
+                afirmacao: [
+                    "Erick o Melhor.",
+                    "Erick o Melhor."
+                ],
+                proxima: null,
             },
         ]
     }
