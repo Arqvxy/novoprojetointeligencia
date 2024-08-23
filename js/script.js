@@ -15,11 +15,13 @@ let atual = 0;
 let perguntaAtual;
 let historiaFinal = "";
 
+// Função para tocar o som sem bloquear outros eventos
 function tocarSomPorTempo() {
-    somArraste.currentTime = 0;
+    somArraste.currentTime = 0; // Reinicia o som para o início
     somArraste.play();
 }
 
+// Função para adicionar som ao mouseover de todos os botões
 function adicionarSomAosBotoes() {
     const botoes = document.querySelectorAll("button");
     botoes.forEach(botao => {
@@ -27,6 +29,7 @@ function adicionarSomAosBotoes() {
     });
 }
 
+// Adicione eventos ao carregar a página
 adicionarSomAosBotoes();
 
 botaoIniciar.addEventListener('click', iniciaJogo);
@@ -59,13 +62,13 @@ function mostraAlternativas() {
         botaoAlternativas.addEventListener("click", () => respostaSelecionada(alternativa));
         caixaAlternativas.appendChild(botaoAlternativas);
     });
-    adicionarSomAosBotoes();
+    adicionarSomAosBotoes(); // Adiciona som aos novos botões
 }
 
 function respostaSelecionada(opcaoSelecionada) {
     const afirmacoes = aleatorio(opcaoSelecionada.afirmacao);
     historiaFinal += afirmacoes + " ";
-    if (opcaoSelecionada.proxima !== undefined) {
+    if (opcaoSelecionada.proxima !== null) {
         atual = opcaoSelecionada.proxima;
     } else {
         mostraResultado();
@@ -80,14 +83,6 @@ function mostraResultado() {
     caixaAlternativas.textContent = "";
     caixaResultado.classList.add("mostrar");
     botaoJogarNovamente.addEventListener("click", jogaNovamente);
-
-    setTimeout(() => {
-        mostrarPopup();
-    }, 100);
-}
-
-function mostrarPopup() {
-    alert(`Olá, você se encontra neste endereço abaixo ↓\n\nEndereço: R. Francisco Xavier de Oliveira, 315 - Tatuquara, Curitiba - PR, 81480-000\n\Dispositivo: Notebook Samsung`);
 }
 
 function jogaNovamente() {
